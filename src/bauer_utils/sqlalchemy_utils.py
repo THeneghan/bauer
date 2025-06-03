@@ -25,12 +25,3 @@ def check_external_id_exists(session: Session, external_id: int) -> bool:
     """Checks to see if this external id exists in the attributes table."""
     result = session.execute(select(Attributes).where(Attributes.external_id == external_id)).first() is not None
     return result
-
-
-#
-# def create_dataset_table_entry(session: Session, dataset_uuid: UUID, raw_file_name: str, gsutil_uri: str):
-#     session.execute(
-#         insert(DataSetID).values(dataset_uuid=str(dataset_uuid), raw_file_name=raw_file_name, gsutil_uri=gsutil_uri)
-#     )
-#     dataset_id = session.execute(select(DataSetID).where(DataSetID.dataset_uuid == str(dataset_uuid)))
-#     return dataset_id

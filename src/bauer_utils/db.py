@@ -5,9 +5,10 @@ import time
 import docker
 from sqlalchemy import Engine, create_engine
 
+from bauer_utils.logging_utils import time_and_log
 from bauer_utils.sockets_ports import port_in_use
 
-
+@time_and_log(args_to_log=['host'])
 def create_postgres_container(container_name: str, host_port: int = 5432, host: str = "127.0.0.1", **docker_env_vars):
     """Creates a postgres db in a docker container"""
     client = docker.from_env()
