@@ -21,7 +21,6 @@ sqlalchemy = {extras = ["mypy"], version = "^2.0.41"}
 pandas = "2.1.4"
 pyarrow = "^19.0.1"
 pyyaml = "^6.0.2"
-faker = "^37.3.0"
 fastapi = "^0.115.12"
 uvicorn = "^0.34.2"
 sqlmodel = "^0.0.24"
@@ -29,6 +28,7 @@ sqlalchemy-utils = "^0.41.2"
 sqlalchemy-mixins = "^2.0.5"
 ijson = "^3.4.0"
 mypy = "1.10.1"
+pytest-datadir = "^1.7.1"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.2"

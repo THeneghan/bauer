@@ -1,10 +1,12 @@
+"""Running this generates the tables in postgres"""
+
 from typing import List
 
 import ijson
 from bauer_utils.db import create_postgres_container
 from bauer_utils.logging_utils import setup_logging
 from bauer_utils.models import Attributes, Events, Purchases
-from bauer_utils.sqlalchemy_utils import (
+from bauer_utils.sql_utils import (
     POSTGRES_PASSWORD,
     POSTGRES_USER,
     Session,
@@ -42,7 +44,7 @@ if __name__ == "__main__":
     setup_logging()
     create_postgres_container(POSTGRES_CONTAINER_NAME, POSTGRES_PASSWORD=POSTGRES_PASSWORD, POSTGRES_USER=POSTGRES_USER)
     create_schema(engine)
-    with open("../payloads.json") as f, Session() as session:
+    with open("../data/payloads.json") as f, Session() as session:
         for record in ijson.items(f, "item"):
             attributes = record["attributes"][0]
             events = record.get("events")
